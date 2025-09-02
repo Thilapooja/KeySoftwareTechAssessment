@@ -10,7 +10,7 @@ function addToList(ulId, text) {
 // ===== CATEGORY =====
 function createCategory() {
     const name = document.getElementById("categoryName").value;
-    fetch(`${backendUrl}/categories`, {
+    fetch("http://localhost:8080/api/categories", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name })
