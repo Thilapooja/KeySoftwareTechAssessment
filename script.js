@@ -24,7 +24,7 @@ function createCategory() {
 }
 
 function loadCategories() {
-    fetch(`${backendUrl}/categories`)
+    fetch("http://localhost:8080/api/categories")
         .then(res => res.json())
         .then(categories => {
             const attrCat = document.getElementById("attributeCategory");
@@ -47,7 +47,7 @@ function createAttribute() {
     const dataType = document.getElementById("attributeType").value;
     const categoryId = document.getElementById("attributeCategory").value;
 
-    fetch(`${backendUrl}/attributes`, {
+    fetch("http://localhost:8080/api/attributes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, dataType, categoryId })
@@ -61,7 +61,7 @@ function createAttribute() {
 }
 
 function loadAttributes(categoryId) {
-    fetch(`${backendUrl}/attributes/category/${categoryId}`)
+    fetch("http://localhost:8080/api/attributes/category/${categoryId}")
         .then(res => res.json())
         .then(attributes => {
             const attrSelect = document.getElementById("attributeSelect");
@@ -80,7 +80,7 @@ function createProduct() {
     const name = document.getElementById("productName").value;
     const categoryId = document.getElementById("productCategory").value;
 
-    fetch(`${backendUrl}/products`, {
+    fetch("http://localhost:8080/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, categoryId })
@@ -114,7 +114,7 @@ function addProductAttributeValue() {
     const attributeId = document.getElementById("attributeSelect").value;
     const value = document.getElementById("attributeValue").value;
 
-    fetch(`${backendUrl}/product-attributes`, {
+    fetch("http://localhost:8080/api/product-attributes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId, attributeId, value })
